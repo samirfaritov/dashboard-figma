@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="../style/dashboard.css" />
+    <link
+      href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="../style/animatiom.css" />
+  </head>
+  <body>
+    <div class="conteiner">
+      <div class="dashboard">
+        <h1>Dashboard</h1>
+        <button class="btn">Добавить задачу</button>
+      </div>
+      <br />
+      <div class="table">
+        <p>Показать задачи как:</p>
+        <p
+          class="tab"
+          style="
+            color: #979797;
+            font-family: Gilroy;
+            font-size: 14px;
+            font-style: normal;
+            font-weight: 600;
+            line-height: normal;
+            cursor: pointer;
+          "
+        >
+          Таблица
+        </p>
+
+        <p
+          style="
+            color: #007fff;
+            font-family: Gilroy;
+            font-size: 14px;
+            font-style: normal;
+            font-weight: 700;
+            line-height: normal;
+            cursor: pointer;
+          "
+        >
+          Плитка
+        </p>
+      </div>
+      <br />
+
+      <div class="content"></div>
+      <div class="dob">
+        <h1>Добавить</h1>
+        <br />
+        <form>
+          <input type="text" placeholder="Заголовок" class="zagolovok" />
+          <input type="text" placeholder="Описание" class="opisanie" />
+          <input type="text" placeholder="Время (type=time)" class="time" />
+          <input type="text" placeholder="Время (type=date)" class="date" />
+          <select name="" id="">
+            <option value="">new</option>
+            <option value="">progress</option>
+            <option value="">done</option>
+          </select>
+          <button class="add" data-action>Добавить</button>
+          <i class="bx bx-x"></i>
+        </form>
+      </div>
+    </div>
+
+    <script src="../js/dashboard.js"></script>
+  </body>
+</html>
