@@ -7,7 +7,6 @@ const date = document.querySelector(".date");
 const dob = document.querySelector(".dob");
 const bx = document.querySelector(".bx");
 
-
 let title = "";
 let project = "";
 let data = "";
@@ -25,9 +24,10 @@ time.addEventListener("keyup", (e) => {
 date.addEventListener("keyup", (e) => {
   vremya = e.target.value;
 });
-const neww = document.querySelector('.neww')
-const progresse = document.querySelector('.progresse')
-const don = document.querySelector('.don')
+const neww = document.querySelector(".neww");
+const progresse = document.querySelector(".progresse");
+const don = document.querySelector(".don");
+let statuss = "";
 
 window.addEventListener("click", (e) => {
   let newDate = new Date();
@@ -39,6 +39,7 @@ window.addEventListener("click", (e) => {
 
   e.preventDefault();
   if (e.target.hasAttribute("data-action")) {
+    
     let newTodo = {
       title,
       project,
@@ -46,8 +47,8 @@ window.addEventListener("click", (e) => {
       vremya: `${hours}:${minute}`,
     };
 
-    if (title, project, data, vremya === '') {
-      alert("hammasini to'ldir!!!")
+    if ((title, project, data, vremya === "")) {
+      alert("hammasini to'ldir!!!");
     } else {
       let todoHtml = `
       <div class="item">
@@ -63,7 +64,7 @@ window.addEventListener("click", (e) => {
       <p class="vremya">${newTodo.vremya}</p>
       </div>
       <br>
-      <p class="start"></p>
+      <p class="start">${statuss}</p>
       </div>
       `;
       
@@ -72,36 +73,36 @@ window.addEventListener("click", (e) => {
       opisanie.value = "";
       time.value = "";
       date.value = "";
-
-      dob.style.display = 'none'
-
-      const start = document.querySelector('.start')
       
-      if (neww) {
-        start.innerHTML = 'Готово'
-      } else if(progresse) {
-          start.innerHTML = 'В прогрессе'
-          start.style.color = '#007FFF'
-        } else if (don) {
-          start.innerHTML = 'Не выполнено'
-          start.style.color = '#FF3F3F'
+      dob.style.display = "none";
       }
 
-      // let d = hours.innerHTML = hours
-      // let e = minute.innerHTML = minute
-      
-      // if (d <= 9) {
-      //     hours.innerHTML = `0${d}`
-      // }
-      // if (e <= 9) {
-      //     minute.innerHTML = `0${e}`
-      // }
+
+      const start = document.querySelector('.start')
+
+      if(statuss === 'new') {
+        start.innerHTML = 'Не выполнено'
+        start.style.color = '#FF3F3F'
+      } else if (statuss === 'progress') {
+        start.innerHTML = 'В прогрессе'
+        start.style.color = '#007FFF'
+      } else if (statuss === 'done') {
+        start.innerHTML = 'Готово'
+        start.style.color = '#000'
+      }
 
     }
+  });
+  const select = document.querySelector("select");
 
+  function selectStatus() {
+    select.addEventListener('change', (e) => {
+      return statuss = e.target.value
+    })
   }
-});
 
+
+  console.log( selectStatus());
 const btn = document.querySelector(".btn");
 
 bx.addEventListener("click", () => {
