@@ -39,7 +39,6 @@ window.addEventListener("click", (e) => {
 
   e.preventDefault();
   if (e.target.hasAttribute("data-action")) {
-    
     let newTodo = {
       title,
       project,
@@ -67,42 +66,46 @@ window.addEventListener("click", (e) => {
       <p class="start">${statuss}</p>
       </div>
       `;
-      
+
       content.insertAdjacentHTML("beforeend", todoHtml);
       zagolovok.value = "";
       opisanie.value = "";
       time.value = "";
       date.value = "";
-      
+
       dob.style.display = "none";
-      }
-
-
-      const start = document.querySelector('.start')
-
-      if(statuss === 'new') {
-        start.innerHTML = 'Не выполнено'
-        start.style.color = '#FF3F3F'
-      } else if (statuss === 'progress') {
-        start.innerHTML = 'В прогрессе'
-        start.style.color = '#007FFF'
-      } else if (statuss === 'done') {
-        start.innerHTML = 'Готово'
-        start.style.color = '#000'
-      }
-
     }
-  });
-  const select = document.querySelector("select");
 
-  function selectStatus() {
-    select.addEventListener('change', (e) => {
-      return statuss = e.target.value
-    })
+    const start = document.querySelector(".start");
+
+    if (statuss === "new") {
+      start.innerHTML = "Не выполнено";
+      start.style.color = "#FF3F3F";
+    } else if (statuss === "progress") {
+      start.innerHTML = "В прогрессе";
+      start.style.color = "#007FFF";
+    } else if (statuss === "done") {
+      start.innerHTML = "Готово";
+      start.style.color = "#000";
+    }
   }
 
 
-  console.log( selectStatus());
+  const deletee = document.querySelector('.delete')
+
+  deletee.classList.add('none')
+
+});
+const select = document.querySelector("select");
+
+function selectStatus() {
+  select.addEventListener("change", (e) => {
+    return (statuss = e.target.value);
+  });
+}
+
+selectStatus()
+
 const btn = document.querySelector(".btn");
 
 bx.addEventListener("click", () => {

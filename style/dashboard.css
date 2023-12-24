@@ -182,3 +182,6 @@ form {
   cursor: pointer;
 }
 
+.none {
+  display: none;
+}
