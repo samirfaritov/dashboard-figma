@@ -1,110 +1,96 @@
-const zagolovok = document.querySelector(".zagolovok");
-const add = document.querySelector(".add");
 const content = document.querySelector(".content");
-const opisanie = document.querySelector(".opisanie");
-const time = document.querySelector(".time");
-const date = document.querySelector(".date");
 const dob = document.querySelector(".dob");
 const bx = document.querySelector(".bx");
+const model = document.querySelector(".model");
+const img = document.querySelector(".img");
+const namee = document.querySelector(".name");
+const data = document.querySelector(".data");
+const price = document.querySelector(".price");
 
-let title = "";
-let project = "";
-let data = "";
-let vremya = "";
+let m = "";
+let i = "";
+let n = "";
+let d = "";
+let p = "";
 
-zagolovok.addEventListener("keyup", (e) => {
-  title = e.target.value;
+model.addEventListener("keyup", (e) => {
+  m = e.target.value;
 });
-opisanie.addEventListener("keyup", (e) => {
-  project = e.target.value;
+img.addEventListener("keyup", (e) => {
+  i = e.target.value;
 });
-time.addEventListener("keyup", (e) => {
-  data = e.target.value;
+namee.addEventListener("keyup", (e) => {
+  n = e.target.value;
 });
-date.addEventListener("keyup", (e) => {
-  vremya = e.target.value;
+data.addEventListener("keyup", (e) => {
+  d = e.target.value;
 });
-const neww = document.querySelector(".neww");
-const progresse = document.querySelector(".progresse");
-const don = document.querySelector(".don");
-let statuss = "";
+price.addEventListener("keyup", (e) => {
+  p = e.target.value;
+});
+
+let shop = {
+  dashboard: [],
+};
+
+let BASE_URL = "http://localhost:5055/";
+
+const getTodos = async () => {
+  let response = await axios.get(`${BASE_URL}shop`);
+
+  return (shop.dashboard = response.data);
+};
+
+getTodos();
 
 window.addEventListener("click", (e) => {
-  let newDate = new Date();
-  let hours = newDate.getHours();
-  let minute = newDate.getMinutes();
-  let a = newDate.getDate();
-  let b = newDate.getMonth();
-  let c = newDate.getFullYear();
-
   e.preventDefault();
+  let newtodo = {
+    m,
+    i,
+    n,
+    d,
+    p
+  };
   if (e.target.hasAttribute("data-action")) {
-    let newTodo = {
-      title,
-      project,
-      data: `${a}:${b}:${c}`,
-      vremya: `${hours}:${minute}`,
-    };
-
-    if ((title, project, data, vremya === "")) {
-      alert("hammasini to'ldir!!!");
-    } else {
+    shop.dashboard.forEach((item) => {
       let todoHtml = `
-      <div class="item">
-      <p class="project">${newTodo.project}</p>
-      <br>
-      <p class="title">
-      ${newTodo.title}
-      </p>
-      <br>
-      <div class="p">
-      <p class="data">${newTodo.data}</p>
-      
-      <p class="vremya">${newTodo.vremya}</p>
+        <div class="item" id="${item.id}">
+        <p class="model">${item.model}</p>
+        <div class="img">
+          <img src="${item.img}" alt="">
+        </div>
+        <p class="name">${item.name}</p>
+        <br>
+        <div class="p">
+          <p class="data">${item.data}</p>
+          <p class="price">${item.price}</p>
+        </div>
       </div>
-      <br>
-      <p class="start">${statuss}</p>
-      </div>
-      `;
-
+        `;
       content.insertAdjacentHTML("beforeend", todoHtml);
-      zagolovok.value = "";
-      opisanie.value = "";
-      time.value = "";
-      date.value = "";
-
       dob.style.display = "none";
-    }
+    });
 
-    const start = document.querySelector(".start");
-
-    if (statuss === "new") {
-      start.innerHTML = "Не выполнено";
-      start.style.color = "#FF3F3F";
-    } else if (statuss === "progress") {
-      start.innerHTML = "В прогрессе";
-      start.style.color = "#007FFF";
-    } else if (statuss === "done") {
-      start.innerHTML = "Готово";
-      start.style.color = "#000";
+    const postTodos = async () => {
+      try {
+        let response = await axios.post(`${BASE_URL}shop`, {
+          "id": shop.dashboard.length + 1,
+          "model": `${m}`,
+          "img": `${i}`,
+          "name": `${n}`,
+          "data": `${d}`,
+          "price": `${p}`
+        });
+      } catch (error) {
+        console.log(error);
+      }
     }
+    getTodos();
+    postTodos()
   }
-
-
-  const deletee = document.querySelector('.delete')
-
-  deletee.classList.add('none')
-
 });
-const select = document.querySelector("select");
 
-function selectStatus() {
-  select.addEventListener("change", (e) => {
-    return (statuss = e.target.value);
-  });
-}
-
-selectStatus()
 
 const btn = document.querySelector(".btn");
 

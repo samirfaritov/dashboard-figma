@@ -1,0 +1,1 @@
+{"version":3,"sources":["style/animatiom.css"],"names":[],"mappings":"AAAA;AACA;AACA;AACA;AACA;AACA;AACA;AACA","file":"animatiom.00ee6707.css","sourceRoot":"..","sourcesContent":["@keyframes fade {\r\n    from {\r\n      opacity: 0.1;\r\n    }\r\n    to {\r\n      opacity: 1;\r\n    }\r\n  }"]}

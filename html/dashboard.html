@@ -56,22 +56,18 @@
         <h1>Добавить</h1>
         <br />
         <form>
-          <input type="text" placeholder="Заголовок" class="zagolovok" />
-          <input type="text" placeholder="Описание" class="opisanie" />
-          <input type="text" placeholder="Время (type=time)" class="time" />
-          <input type="text" placeholder="Время (type=date)" class="date" />
-          <select name="" id="">
-            <option value="" class="delete">выберите</option>
-            <option value="new">new</option>
-            <option value="progress">progress</option>
-            <option value="done">done</option>
-          </select>
+          <input type="text" placeholder="Модель" class="model" />
+          <input type="text" placeholder="Фотография" class="img" />
+          <input type="text" placeholder="Имя" class="name" />
+          <input type="text" placeholder="Дата выхода" class="data" />
+          <input type="text" placeholder="Цена" class="price" />
           <button class="add" data-action>Добавить</button>
           <i class="bx bx-x"></i>
         </form>
       </div>
     </div>
 
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <script src="../js/dashboard.js"></script>
   </body>
 </html>

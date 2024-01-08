@@ -99,11 +99,6 @@ window.addEventListener("click", (e) => {
       start.innerHTML = "Готово";
       start.style.color = "#000";
     }
-
-
-
-    
-    
   }
 });
 
