@@ -55,7 +55,7 @@ window.addEventListener("click", (e) => {
   if (e.target.hasAttribute("data-action")) {
     shop.dashboard.forEach((item) => {
       let todoHtml = `
-        <div class="item" id="${item.id}">
+        <div class="item">
         <p class="model">${item.model}</p>
         <div class="img">
           <img src="${item.img}" alt="">
@@ -66,6 +66,7 @@ window.addEventListener("click", (e) => {
           <p class="data">${item.data}</p>
           <p class="price">${item.price}</p>
         </div>
+        <button class="delete" id="${item.id}">Delete</button>
       </div>
         `;
       content.insertAdjacentHTML("beforeend", todoHtml);
@@ -89,6 +90,21 @@ window.addEventListener("click", (e) => {
     getTodos();
     postTodos()
   }
+  
+
+
+  if (e.target.classList.contains('delete')) {
+    let id = e.target.id
+    
+    const removeTodo =  async () => {
+      let res = await axios.delete(`${BASE_URL}shop/${id}`)
+      console.log(res);
+    }
+
+    removeTodo()
+    getTodos()
+  }
+  
 });
 
 

@@ -72,7 +72,7 @@ body {
 
 .conteiner .content .item {
   width: 280px;
-  height: 370px;
+  height: 400px;
   flex-shrink: 0;
   border-radius: 10px;
   border: 1px solid #d8d8d8;
@@ -106,7 +106,7 @@ body {
 
 .conteiner .content .item .p {
   display: flex;
-  gap: 125px;
+  gap: 140px;
   position: relative;
   left: 10px;
 }
@@ -187,4 +187,11 @@ form {
 
 .none {
   display: none;
+}
+
+.conteiner .content .item .delete {
+  width: 114px;
+  height: 23px;
+  position: relative;
+  left: 56px;
 }
